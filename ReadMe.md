@@ -7,3 +7,4 @@ Assumptions:
 And NOT
 
 [BOOK-WILL987] The Wind In The Willows - With the arrival of spring and fine weather outside,...
+3. Implemented tests in junit 5
