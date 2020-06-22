@@ -4,10 +4,13 @@ import com.sky.library.dao.Book;
 import com.sky.library.exception.BookNotFoundException;
 import com.sky.library.repository.BookRepository;
 import com.sky.library.util.WordProcessor;
+import org.apache.log4j.Logger;
 
 import static com.sky.library.util.WordProcessor.*;
 
 public class BookServiceImpl implements BookService {
+
+    private static final Logger log = Logger.getLogger(BookServiceImpl.class);
 
     BookRepository bookRepository;
 
@@ -17,6 +20,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book retrieveBook(String bookReference) throws BookNotFoundException {
+        log.info("Get Book details for book reference, "+  bookReference);
         validateBookReference(bookReference);
 
         Book book = bookRepository.retrieveBook(bookReference);
@@ -30,6 +34,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public String getBookSummary(String bookReference) throws BookNotFoundException {
+        log.info("Get Book Summary for book reference, "+  bookReference);
         Book book = retrieveBook(bookReference);
         StringBuilder sb = new StringBuilder(OPEN_BRACKETS)
                 .append(book.getReference())
